@@ -1,4 +1,3 @@
--- cmd(admin) command to start server: net start MySQL80
 -- Bike Store Relational Database
 
 -- Load csv files into tables using import wizard, for larger tables use the following commands:
@@ -62,6 +61,7 @@ WHERE NOT shipped_date IS NULL;
 -- therefore 1,2 and 3 must mean the order has not been shipped yet.
 -- I will keep these rows for now but can filter them out later eg. If I wanted to check only shipped orders.
 
+
 -- See if there are any duplicate rows in the larger datasets:
 
 -- The following statement groups the rows in the table and counts each unique combination of cells,
@@ -100,20 +100,29 @@ HAVING count > 1;
 -- Add a new name column to the table:
 ALTER TABLE bikestore_db.customers
 ADD COLUMN full_name VARCHAR(255);
+
 -- concatenate strings from the first and last name and add them into the new column:
+
 UPDATE bikestore_db.customers
 SET full_name = CONCAT(first_name,' ',last_name);
+
 -- Drop the first_name and last_name columns:
+
 ALTER TABLE bikestore_db.customers
 DROP COLUMN first_name,
 DROP COLUMN last_name;
+
 -- Change the postition of the new column from the end of the table to the 2nd position:
+
 ALTER TABLE bikestore_db.customers
 MODIFY COLUMN full_name VARCHAR(255) AFTER customer_id;
+
 -- Check that it has worked:
+
 SELECT * FROM bikestore_db.customers;
 
 -- Now I will repeat this for the staffs table:
+
 ALTER TABLE bikestore_db.staffs
 ADD COLUMN full_name VARCHAR(255);
 
@@ -128,3 +137,89 @@ ALTER TABLE bikestore_db.staffs
 MODIFY COLUMN full_name VARCHAR(255) AFTER staff_id;
 
 SELECT * FROM bikestore_db.staffs;
+
+
+-- I will add a new column into the order_items table that calculates the net price for each order, as
+-- this will be used frequently in analysis and will save time having to type the calculation each time:
+
+ALTER TABLE order_items 
+ADD net_price DOUBLE
+AS (quantity * list_price * (1 - discount));
+
+-- Convert data type of dates from TEXT to DATE for standardisation:
+
+ALTER TABLE `bikestore_db`.`orders` 
+CHANGE COLUMN `order_date` `order_date` DATE NULL DEFAULT NULL ,
+CHANGE COLUMN `required_date` `required_date` DATE NULL DEFAULT NULL ,
+CHANGE COLUMN `shipped_date` `shipped_date` DATE NULL DEFAULT NULL ;
+
+-- Data analysis 
+
+-- Find the total sales made by each staff member:
+
+-- When formatting the total_sales in GBP and trying to order by highest to lowest, it does not work
+-- properly as it has been converted from numeric to string, and sorts alphabetically.
+-- To fix this issue I will use a subquery, the numeric value is used for sorting within
+-- the subquery, and only the formatted sales are selected in the final result. 
+
+SELECT full_name, CONCAT('£', FORMAT(total_sales_raw, 0)) AS total_sales
+FROM
+(
+SELECT st.full_name, SUM(oi.net_price) AS total_sales_raw
+FROM staffs st
+JOIN orders o ON st.staff_id = o.staff_id
+JOIN order_items oi ON o.order_id = oi.order_id
+GROUP BY st.full_name
+)
+AS sales_data
+ORDER BY total_sales_raw DESC; -- Values checked through same method in Excel are correct.
+
+-- Monthly Sales Trends:
+
+SELECT DATE_FORMAT(order_date, '%Y-%m') AS month, SUM(oi.net_price) AS total_sales
+FROM orders o
+JOIN order_items oi ON o.order_id = oi.order_id
+GROUP BY month
+ORDER BY month; -- These values have been checked with Excel power query and are correct.
+
+-- Format the output in GBP to the nearest pound for cleaner presentation, and create a view for easier referencing:
+
+CREATE VIEW monthly_sales AS
+SELECT DATE_FORMAT(order_date, '%Y-%m') AS month, CONCAT('£',FORMAT(SUM(oi.net_price),0)) AS total_sales
+FROM orders o
+JOIN order_items oi ON o.order_id = oi.order_id
+GROUP BY month
+ORDER BY month;
+
+-- View the ouput:
+
+SELECT * FROM bikestore_db.monthly_sales;
+
+-- Low Stock Products across stores (Less Than 10 Units):
+
+SELECT p.product_name, s.store_name, st.quantity
+FROM stocks st
+JOIN products p ON st.product_id = p.product_id
+JOIN stores s ON st.store_id = s.store_id
+WHERE st.quantity < 10
+ORDER BY st.quantity;
+
+-- Total Products by Category:
+
+SELECT c.category_name, COUNT(p.product_id) AS total_products
+FROM categories c
+JOIN products p ON c.category_id = p.category_id
+GROUP BY 1;
+
+-- Total Products by Brand:
+
+SELECT b.brand_name, COUNT(p.product_id) AS total_products
+FROM brands b
+JOIN products p ON b.brand_id = p.brand_id
+GROUP BY 1;
+
+-- Total orders by status to date:
+
+SELECT  CASE WHEN order_status = 4 THEN 'Shipped' ELSE 'Not Shipped' END AS Status , COUNT(*) AS total_orders
+FROM orders
+GROUP BY Status;
