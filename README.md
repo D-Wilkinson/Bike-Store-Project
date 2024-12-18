@@ -6,6 +6,8 @@ WORK IN PROGRESS
 
 [SQL Script](https://github.com/D-Wilkinson/SQL-WIP/blob/09094eae6423be2ff98841a1d8819bb0e8956214/Bike%20Store.sql)
 
+If you want to use these statements yourself, download the [database_dump.sql](https://github.com/D-Wilkinson/SQL-WIP/blob/a4e5ad21790db5e7717a5828761f5d5571f69d91/database_dump.sql) file and open MySQL workbench with a new empty schema, then run the sql script to create the tables etc. Then you can use the ‘Bike Store.sql’ statements yourself.
+
 # Bike Store Data Analysis
 
 ## Introduction
