@@ -15,11 +15,10 @@ If you want to use these statements yourself, download the [Database Setup.sql](
 # Bike Store Data Analysis
 
 ## Introduction
-I utilised a publicly available Bike Store database downloaded from Kaggle, which consisted of 9 CSV files. The aim of this project was to perform data cleaning and analysis using MySQL Workbench.
+I utilised a publicly available Bike Store database downloaded from Kaggle, which consisted of 9 CSV files. The aim of this project was to perform data cleaning and analysis using MySQL Workbench to demonstrate SQL skills, and then to load the manipulated data into PowerBI to create visualisations.
 
 ### Skills Demonstrated:
 - Inner Joins
-- Subqueries
 - Aggregate Functions
 - Creating Views
 - Converting Data Types
