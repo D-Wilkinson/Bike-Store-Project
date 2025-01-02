@@ -6,6 +6,10 @@ WORK IN PROGRESS
 
 [SQL Script](https://github.com/D-Wilkinson/SQL-WIP/blob/09094eae6423be2ff98841a1d8819bb0e8956214/Bike%20Store.sql)
 
+[PowerBI Dashboard .pbix](https://github.com/D-Wilkinson/Bike-Store-Project/blob/768d87ee1c7900530b83617f1034dc9c92fa8752/Bike%20Store%20Dashboard.pbix)
+
+[PowerBI Dashboard .pdf](https://github.com/D-Wilkinson/Bike-Store-Project/blob/768d87ee1c7900530b83617f1034dc9c92fa8752/Bike%20Store%20Dashboard.pdf)
+
 If you want to use these statements yourself, download the [Database Setup.sql](https://github.com/D-Wilkinson/SQL-WIP/blob/e8e9bd90aad4f9550794ae3eb9e56dfe97de0263/Database%20Setup.sql) file and open MySQL workbench with a new empty schema, then run the sql script to create the tables etc. Then you can use the ‘Bike Store.sql’ statements yourself.
 
 # Bike Store Data Analysis
