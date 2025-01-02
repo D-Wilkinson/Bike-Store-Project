@@ -62,10 +62,15 @@ Standardising Dates:
 
 
 ## Data Analysis
+
+In the following statements I create a view for each query, which stores the results in a table,
+this can then easily be imported into PowerBI to create visualisations.
+
 Sales by Staff:
- Using a subquery, I calculated the total sales made by each staff member.
+ Using inner joins, I calculated the total sales made by each staff member.
  
-![IMG10](https://github.com/user-attachments/assets/bc2e647f-25e9-45c7-aae4-4e61df4e51e1)
+![IMG10](https://github.com/user-attachments/assets/bf3932e0-1f7f-4bf4-9baa-414503e6259f)
+
 
 
 Monthly Sales Trends:
