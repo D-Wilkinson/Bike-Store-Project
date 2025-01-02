@@ -100,4 +100,4 @@ Order Status Grouping:
 
 
 ## Conclusion
-The project demonstrated proficiency in data cleaning, transformation, and analysis using SQL. By leveraging subqueries, views, and advanced SQL functions, I provided actionable insights into sales performance, inventory management, and product distribution.
+The project demonstrated proficiency in data cleaning, transformation, and analysis using SQL. By leveraging views, and advanced SQL functions, I provided actionable insights into sales performance, inventory management, and product distribution through PowerBI.
