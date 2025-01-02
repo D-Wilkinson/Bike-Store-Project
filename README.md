@@ -12,7 +12,7 @@ WORK IN PROGRESS
 
 If you want to use these statements yourself, download the [Database Setup.sql](https://github.com/D-Wilkinson/SQL-WIP/blob/e8e9bd90aad4f9550794ae3eb9e56dfe97de0263/Database%20Setup.sql) file and open MySQL workbench with a new empty schema, then run the sql script to create the tables etc. Then you can use the ‘Bike Store.sql’ statements yourself.
 
-# Bike Store Data Analysis
+# Bike Store Project
 
 ## Introduction
 I utilised a publicly available Bike Store database downloaded from Kaggle, which consisted of 9 CSV files. The aim of this project was to perform data cleaning and analysis using MySQL Workbench to demonstrate SQL skills, and then to load the manipulated data into PowerBI to create visualisations.
