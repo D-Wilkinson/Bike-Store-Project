@@ -97,6 +97,7 @@ HAVING count > 1;
 -- No rows have been returned therefore none of the tables contain duplicate rows.
 
 -- The customers and staffs tables contains first and last names, I will join/concatenate these columns together:
+
 -- Add a new name column to the table:
 ALTER TABLE bikestore_db.customers
 ADD COLUMN full_name VARCHAR(255);
@@ -138,7 +139,6 @@ MODIFY COLUMN full_name VARCHAR(255) AFTER staff_id;
 
 SELECT * FROM bikestore_db.staffs;
 
-
 -- I will add a new column into the order_items table that calculates the net price for each order, as
 -- this will be used frequently in analysis and will save time having to type the calculation each time:
 
@@ -155,48 +155,31 @@ CHANGE COLUMN `shipped_date` `shipped_date` DATE NULL DEFAULT NULL ;
 
 -- Data analysis 
 
+-- In the following statements I create a view for each query, which stores the results in a table,
+-- this can then easily be imported into PowerBI to create visualisations.
+
 -- Find the total sales made by each staff member:
 
--- When formatting the total_sales in GBP and trying to order by highest to lowest, it does not work
--- properly as it has been converted from numeric to string, and sorts alphabetically.
--- To fix this issue I will use a subquery, the numeric value is used for sorting within
--- the subquery, and only the formatted sales are selected in the final result. 
-
-SELECT full_name, CONCAT('£', FORMAT(total_sales_raw, 0)) AS total_sales
-FROM
-(
-SELECT st.full_name, SUM(oi.net_price) AS total_sales_raw
+CREATE VIEW staff_sales AS
+SELECT st.full_name, SUM(oi.net_price) AS total_sales
 FROM staffs st
 JOIN orders o ON st.staff_id = o.staff_id
 JOIN order_items oi ON o.order_id = oi.order_id
 GROUP BY st.full_name
-)
-AS sales_data
-ORDER BY total_sales_raw DESC; -- Values checked through same method in Excel are correct.
+ORDER BY total_sales DESC; -- Values checked through same method in Excel are correct.
 
 -- Monthly Sales Trends:
 
-SELECT DATE_FORMAT(order_date, '%Y-%m') AS month, SUM(oi.net_price) AS total_sales
+CREATE VIEW monthly_sales AS
+SELECT DATE_FORMAT(order_date, '%Y-%m') AS month, SUM(oi.net_price) AS total_sales, SUM(oi.quantity) AS total_products_sold
 FROM orders o
 JOIN order_items oi ON o.order_id = oi.order_id
 GROUP BY month
 ORDER BY month; -- These values have been checked with Excel power query and are correct.
 
--- Format the output in GBP to the nearest pound for cleaner presentation, and create a view for easier referencing:
+-- Low Stock Products across stores (less than 10):
 
-CREATE VIEW monthly_sales AS
-SELECT DATE_FORMAT(order_date, '%Y-%m') AS month, CONCAT('£',FORMAT(SUM(oi.net_price),0)) AS total_sales
-FROM orders o
-JOIN order_items oi ON o.order_id = oi.order_id
-GROUP BY month
-ORDER BY month;
-
--- View the ouput:
-
-SELECT * FROM bikestore_db.monthly_sales;
-
--- Low Stock Products across stores (Less Than 10 Units):
-
+CREATE VIEW stock_levels AS
 SELECT p.product_name, s.store_name, st.quantity
 FROM stocks st
 JOIN products p ON st.product_id = p.product_id
@@ -204,22 +187,26 @@ JOIN stores s ON st.store_id = s.store_id
 WHERE st.quantity < 10
 ORDER BY st.quantity;
 
--- Total Products by Category:
+-- Total products by Category and Brand:
 
-SELECT c.category_name, COUNT(p.product_id) AS total_products
-FROM categories c
-JOIN products p ON c.category_id = p.category_id
-GROUP BY 1;
-
--- Total Products by Brand:
-
-SELECT b.brand_name, COUNT(p.product_id) AS total_products
+CREATE VIEW Product_type AS
+SELECT c.category_name, b.brand_name, COUNT(p.product_id) AS total_products
 FROM brands b
 JOIN products p ON b.brand_id = p.brand_id
-GROUP BY 1;
+JOIN categories c ON c.category_id = p.category_id
+GROUP BY 1,2;
 
 -- Total orders by status to date:
 
+CREATE VIEW Order_Status AS
 SELECT  CASE WHEN order_status = 4 THEN 'Shipped' ELSE 'Not Shipped' END AS Status , COUNT(*) AS total_orders
 FROM orders
 GROUP BY Status;
+
+-- Check the ouput from the views:
+
+SELECT * FROM bikestore_db.staff_sales;
+SELECT * FROM bikestore_db.monthly_sales;
+SELECT * FROM bikestore_db.stock_levels;
+SELECT * FROM bikestore_db.product_type;
+SELECT * FROM bikestore_db.order_status;
