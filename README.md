@@ -30,7 +30,7 @@ Checking for NULL Values:
  Tables were inspected for any missing values that could affect the analysis.
  
 ![IMG1](https://github.com/user-attachments/assets/b78562c3-80ca-40a6-815b-6d902ea0a9f5)
-![IMG2](https://github.com/user-attachments/assets/a4dfd864-73e0-4186-8064-fb2c064b8260)
+![IMG2](https://github.com/user-attachments/assets/c7ff8d77-4c29-4f58-ade9-571dc040f39b)
 
 
 Removing Duplicates:
