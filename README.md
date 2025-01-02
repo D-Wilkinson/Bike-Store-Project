@@ -74,27 +74,28 @@ Sales by Staff:
 
 
 Monthly Sales Trends:
- Total sales were aggregated by month, and a view was created for easier referencing in future queries.
+ Total sales were aggregated by month.
  
-![IMG11](https://github.com/user-attachments/assets/c99acdfb-f6dd-4e58-b642-d87f0851aa4f)
+
+![IMG11](https://github.com/user-attachments/assets/24fa7b3f-b8c8-4f6a-af05-1e1c74acb86a)
 
 
 Low Stock Products:
  Products with low stock levels were flagged for inventory management purposes.
  
-![IMG12](https://github.com/user-attachments/assets/63c725c3-9c6d-4774-93f8-1ed3c516d9fb)
+![IMG12](https://github.com/user-attachments/assets/7c69469c-8a8d-494d-afdc-44ebda74bb46)
 
 
 Product Breakdown:
- The total number of products was grouped by both category and brand to understand product distribution.
+ The total number of products were grouped by both category and brand to understand product distribution.
  
-![IMG13](https://github.com/user-attachments/assets/b2608867-46a7-42fb-acfa-62edb1c392f2)
+ ![IMG13](https://github.com/user-attachments/assets/65b265f9-eca2-4391-a6fd-038f636ba5af)
 
 
 Order Status Grouping:
  Orders were categorised based on their shipped status using a CASE function, enabling more detailed order tracking.
  
-![IMG14](https://github.com/user-attachments/assets/9e030728-ca46-4e1a-a279-9e086f419f75)
+![IMG14](https://github.com/user-attachments/assets/399fce56-23e0-47b2-aceb-b3f436a6be8e)
 
 
 
