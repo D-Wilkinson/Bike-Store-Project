@@ -23,7 +23,9 @@ I utilised a publicly available Bike Store database downloaded from [Kaggle](htt
 - Creating Views
 - Converting Data Types
 - Case Functions
-## Data Preparation
+- Data Preparation
+- Loading Data
+
 Each CSV file was loaded into MySQL tables. I verified that the tables were imported successfully by ensuring the number of rows in the tables matched those shown in Excel.
 ## Data Cleaning
 Checking for NULL Values:
@@ -97,6 +99,20 @@ Order Status Grouping:
  
 ![IMG14](https://github.com/user-attachments/assets/399fce56-23e0-47b2-aceb-b3f436a6be8e)
 
+## Data Visualisation
+To further enhance the insights generated from the analysis, I imported SQL views into Power BI to create a range of visualisations:
+
+Monthly Sales Trends: A line chart was created to display monthly sales over time, highlighting peaks and troughs in performance. This visualisation helped identify seasonal patterns in sales.
+
+Total Sales by Staff Member: A bar chart was used to rank staff members by their total sales, providing a clear comparison of performance.
+
+Low Stock Products: A table and stacked bar chart were designed to display products with low inventory levels (less than 10), aiding in proactive inventory management.
+
+Order Status: A donut chart visualised the proportion of orders categorised as "Shipped" and "Not Shipped," offering an overview of order fulfilment efficiency.
+
+Product Distribution: A pie chart illustrated the breakdown of products by category and brand, providing insights into product variety, this chart can be interacted with to show category only, brand only, or both. 
+
+Each visualisation was interactive, allowing for dynamic filtering and drill-down capabilities, enhancing the ability to derive actionable insights.
 
 
 ## Conclusion
