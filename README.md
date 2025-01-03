@@ -100,9 +100,12 @@ Order Status Grouping:
 ![IMG14](https://github.com/user-attachments/assets/399fce56-23e0-47b2-aceb-b3f436a6be8e)
 
 ## Data Visualisation
-To further enhance the insights generated from the analysis, I imported SQL views into Power BI to create a range of visualisations:
+To further enhance the insights generated from the analysis, I imported SQL views into Power BI to create a range of visualisations.
 
 Monthly Sales Trends: A line chart was created to display monthly sales over time, highlighting peaks and troughs in performance. This visualisation helped identify seasonal patterns in sales.
+
+![IMG15](https://github.com/user-attachments/assets/d0fd586a-84ff-4a77-af48-fc8e47cb240f)
+
 
 Total Sales by Staff Member: A bar chart was used to rank staff members by their total sales, providing a clear comparison of performance.
 
