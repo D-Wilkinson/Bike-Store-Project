@@ -3,7 +3,7 @@
 ## Introduction
 I utilised a publicly available Bike Store database downloaded from [Kaggle](https://www.kaggle.com/datasets/dillonmyrick/bike-store-sample-database), which consisted of 9 CSV files. The aim of this project was to perform data cleaning and analysis using MySQL Workbench to demonstrate SQL skills, and then to load the manipulated data into PowerBI to create visualisations.
 
-[Initial Dataset](https://github.com/D-Wilkinson/SQL-WIP/tree/34802d17155ce26338d99ba5617d6432b5582c9a/Intial%20CSV%20Data)
+[Initial Dataset](https://github.com/D-Wilkinson/SQL-WIP/tree/main/Intial%20CSV%20Data)
 
 ### Skills Demonstrated:
 - Inner Joins
@@ -17,7 +17,7 @@ I utilised a publicly available Bike Store database downloaded from [Kaggle](htt
 Each CSV file was loaded into MySQL tables. I verified that the tables were imported successfully by ensuring the number of rows in the tables matched those shown in Excel.
 ## Data Cleaning
 
-[SQL Script](https://github.com/D-Wilkinson/SQL-WIP/blob/09094eae6423be2ff98841a1d8819bb0e8956214/Bike%20Store.sql)
+[SQL Script](https://github.com/D-Wilkinson/SQL-WIP/blob/main/Bike%20Store.sql)
 
 Checking for NULL Values:
  Tables were inspected for any missing values that could affect the analysis.
@@ -61,7 +61,7 @@ Standardising Dates:
 In the following statements I create a view for each query, which stores the results in a table,
 this can then easily be imported into PowerBI to create visualisations.
 
-(If you want to use these statements yourself, download the [Database Setup.sql](https://github.com/D-Wilkinson/SQL-WIP/blob/e8e9bd90aad4f9550794ae3eb9e56dfe97de0263/Database%20Setup.sql) file and open MySQL workbench with a new empty schema, then run the sql script to create the tables etc. Then you can use the ‘Bike Store.sql’ statements yourself.)
+(If you want to use these statements yourself, download the [Database Setup.sql](https://github.com/D-Wilkinson/SQL-WIP/blob/main/Database%20Setup.sql) file and open MySQL workbench with a new empty schema, then run the sql script to create the tables etc. Then you can use the ‘Bike Store.sql’ statements yourself.)
 
 Sales by Staff:
  Using inner joins, I calculated the total sales made by each staff member.
@@ -97,9 +97,9 @@ Order Status Grouping:
 ## Data Visualisation
 To further enhance the insights generated from the analysis, I imported SQL views into Power BI to create a range of visualisations.
 
-[PowerBI Dashboard .pbix](https://github.com/D-Wilkinson/Bike-Store-Project/blob/768d87ee1c7900530b83617f1034dc9c92fa8752/Bike%20Store%20Dashboard.pbix)
+[PowerBI Dashboard .pbix](https://github.com/D-Wilkinson/Bike-Store-Project/blob/main/Bike%20Store%20Dashboard.pbix)
 
-[PowerBI Dashboard .pdf](https://github.com/D-Wilkinson/Bike-Store-Project/blob/768d87ee1c7900530b83617f1034dc9c92fa8752/Bike%20Store%20Dashboard.pdf) (Note the pdf version cannot be interacted with)
+[PowerBI Dashboard .pdf](https://github.com/D-Wilkinson/Bike-Store-Project/blob/main/Bike%20Store%20Dashboard.pdf) (Note the pdf version cannot be interacted with)
 
 Monthly Sales Trends: A line chart was created to display monthly sales over time, highlighting peaks and troughs in performance. This visualisation helped identify seasonal patterns in sales.
 
