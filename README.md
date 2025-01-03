@@ -106,14 +106,23 @@ Monthly Sales Trends: A line chart was created to display monthly sales over tim
 
 ![IMG15](https://github.com/user-attachments/assets/d0fd586a-84ff-4a77-af48-fc8e47cb240f)
 
+Product Distribution: A pie chart illustrated the breakdown of products by category and brand, providing insights into product variety, this chart can be interacted with to show category only, brand only, or both. 
 
-Total Sales by Staff Member: A bar chart was used to rank staff members by their total sales, providing a clear comparison of performance.
-
-Low Stock Products: A table and stacked bar chart were designed to display products with low inventory levels (less than 10), aiding in proactive inventory management.
+![IMG16](https://github.com/user-attachments/assets/24d77e38-8c1c-42de-b012-081b67c1921c)
 
 Order Status: A donut chart visualised the proportion of orders categorised as "Shipped" and "Not Shipped," offering an overview of order fulfilment efficiency.
 
-Product Distribution: A pie chart illustrated the breakdown of products by category and brand, providing insights into product variety, this chart can be interacted with to show category only, brand only, or both. 
+![IMG17](https://github.com/user-attachments/assets/2bbed4b9-2245-4a2e-8cde-7504286b9e8c)
+
+Total Sales by Staff Member: A bar chart was used to rank staff members by their total sales, providing a clear comparison of performance.
+
+![IMG18](https://github.com/user-attachments/assets/43ebc9e3-c42a-4bbf-9884-bdd264baae5d)
+
+Low Stock Products: A table and stacked bar chart were designed to display products with low inventory levels (less than 10), aiding in proactive inventory management.
+
+![IMG19](https://github.com/user-attachments/assets/4434eba8-2051-48d7-b933-1ce0d4fcca78)
+![IMG20](https://github.com/user-attachments/assets/499c1c33-8b28-48a5-ac80-17e654c9c841)
+
 
 Each visualisation was interactive, allowing for dynamic filtering and drill-down capabilities, enhancing the ability to derive actionable insights.
 
